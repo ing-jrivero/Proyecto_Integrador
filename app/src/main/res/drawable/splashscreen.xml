@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/design_default_color_primary_dark"/>
+    <item android:drawable="@color/orange_1"/>
     <item>
-        <bitmap android:src="@drawable/icons8"
+        <bitmap android:src="@drawable/icons8_burger_96"
             android:gravity="center"/>
     </item>
 </layer-list>
