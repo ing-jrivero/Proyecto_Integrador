@@ -1,10 +1,10 @@
-package com.example.proyecto_integrador.ui.home
+package com.example.proyecto_integrador.ui.menu
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class MenuViewModel : ViewModel() {
 
     private val _text_hamburguesas = MutableLiveData<String>().apply {
         value = "Hamburguesas"

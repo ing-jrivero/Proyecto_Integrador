@@ -1,13 +1,10 @@
-package com.example.proyecto_integrador.ui.dashboard
+package com.example.proyecto_integrador.ui.maps
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.proyecto_integrador.R
 //import com.example.proyecto_integrador.databinding.FragmentDashboardBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -37,9 +34,9 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val tecnologico = LatLng(32.620751, -115.396021)
+        googleMap.addMarker(MarkerOptions().position(tecnologico).title("Lugar de Entrega"))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(tecnologico))
     }
 
     override fun onCreateView(
