@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_hamburguesas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/ib_H_01"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/chipotleking"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:layout_marginLeft="15dp"/>
+
+                    <ImageButton
+                        android:id="@+id/ib_H_02"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/long_jalapeno"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/ib_H_03"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/long_rodeo"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/ib_H_04"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:layout_weight="0"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/stacker_quintuple" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tv_complementos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="20sp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/ib_C_01"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/papas_fritas_img_grid"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:layout_marginLeft="15dp"/>
+
+                    <ImageButton
+                        android:id="@+id/ib_C_02"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/bk_papas_supremas_atumanera"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/ib_C_03"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/nuggetensalada_grande"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/ib_C_04"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/bk_web_ensalada_cranberry" />
+
+                    <ImageButton
+                        android:id="@+id/ib_C_05"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/jugo" />
+
+                    <ImageButton
+                        android:id="@+id/ib_C_06"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/burgerking_agua_epura" />
+
+                    <ImageButton
+                        android:id="@+id/ib_C_07"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cafe_dunkin" />
+
+                    <ImageButton
+                        android:id="@+id/ib_C_08"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/burgerking_pepsi" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <TextView
+                android:id="@+id/tv_postres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="20sp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/ib_P_01"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/oreo_shake_thumb"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:layout_marginLeft="15dp"/>
+
+                    <ImageButton
+                        android:id="@+id/ib_P_02"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/bk_web_kingfusionkitkat"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/ib_P_03"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/king_fusion_emperador"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/ib_P_04"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/king_fusion_oreo" />
+
+                    <ImageButton
+                        android:id="@+id/ib_P_05"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/pay" />
+
+                    <ImageButton
+                        android:id="@+id/ib_P_06"
+                        android:layout_width="200dp"
+                        android:layout_height="168dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/pastel" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tv_espacio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="48sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

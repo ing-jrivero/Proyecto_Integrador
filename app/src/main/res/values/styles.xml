@@ -8,7 +8,11 @@
         <item name="colorAccent">@color/cardview_dark_background</item>
     </style>
 
+
+
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
+
+
 </resources>

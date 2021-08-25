@@ -31,9 +31,17 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        val textView_hamburguesas: TextView = binding.tvHamburguesas
+        homeViewModel.text_hamburguesas.observe(viewLifecycleOwner, Observer {
+            textView_hamburguesas.text = it
+        })
+        val textView_complementos: TextView = binding.tvComplementos
+        homeViewModel.text_complementos.observe(viewLifecycleOwner, Observer {
+            textView_complementos.text = it
+        })
+        val textView_postres: TextView = binding.tvPostres
+        homeViewModel.text_postres.observe(viewLifecycleOwner, Observer {
+            textView_postres.text = it
         })
         return root
     }
