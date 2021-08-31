@@ -9,7 +9,12 @@
         android:id="@+id/navigation_menu"
         android:name="com.example.proyecto_integrador.ui.menu.MenuFragment"
         android:label="@string/title_menu"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_navigation_menu_to_fragmentDetails"
+            app:destination="@id/fragmentDetails"
+            app:popUpToInclusive="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_map"
@@ -22,4 +27,8 @@
         android:name="com.example.proyecto_integrador.ui.ticket.TicketFragment"
         android:label="@string/title_recibo"
         tools:layout="@layout/fragment_ticket" />
+    <fragment
+        android:id="@+id/fragmentDetails"
+        android:name="com.example.proyecto_integrador.FragmentDetails"
+        android:label="FragmentDetails" />
 </navigation>

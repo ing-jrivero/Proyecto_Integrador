@@ -8,6 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.proyecto_integrador.Order_info
+import com.example.proyecto_integrador.R
 import com.example.proyecto_integrador.databinding.FragmentMenuBinding
 
 class MenuFragment : Fragment() {
@@ -15,9 +18,17 @@ class MenuFragment : Fragment() {
     private lateinit var menuViewModel: MenuViewModel
     private var _binding: FragmentMenuBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+
     private val binding get() = _binding!!
+/*
+    override fun onCreateView(
+
+        inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_menu, container, false)
+    }
+*/
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +54,102 @@ class MenuFragment : Fragment() {
             textView_postres.text = it
         })
         return root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val bundle = Bundle()
+        _binding = FragmentMenuBinding.bind(view)
+        binding!!.ibH01.setOnClickListener(){
+
+            bundle.putParcelable("Order", Order_info("Chipotle King",119.99,1,"Preparada con dos carnes de res a la parrilla, jugosos jitomates, lechuga recién cortada, tocino, nuevo aderezo de chipotle y aros de cebolla crujientes, sobre un pan suave con ajonjolí. "))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+
+        }
+        binding!!.ibH02.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Long Jalapeño",89.99,2,"Carne de res a la parrilla, queso americano, aros de cebolla, lechuga y picositos jalapeños"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+        binding!!.ibH03.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Long Rodeo",89.99,3,"Carne de res a la parrilla, queso americano, aros de cebolla crujientes, salsa BBQ"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibH04.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Stacker Quitutuple",149.99,4,"La hamburguesa más grande de todos los tiempos llega a tus dos manos.Con tocino crujiente, queso derretido, salsa Stacker y con 5 carnes"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibC01.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Papas a la Francesa",24.99,5,"Más deliciosas que nunca, nuestras famosas papas a la francesa son de corte regular, saladito, doradas por fuera y suaves por dentro."))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibC02.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Papas Supremas",49.99,6,"Descubre las nuevas papas supremas bañadas en salsa sabor a queso con trocitos sabor tocino y cebollitas crujientes!"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibC03.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Ensalada con Nuggets",59.99,7,"Deliciosa combinación de lechugas y vegetales frescos con una combinación de salsas de la casa. "))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibC04.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Ensalada Cranberry",89.99,8,"Deliciosa combinación de lechugas, con rodajas de piña y vegetales"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibC05.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Juego de Naranja",19.99,9,"¡Bebida refrescante!"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibC06.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Agua Epura",14.99,10,"¡Acompaña tus combos con una botella de Epura!"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibC07.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Cafe Dunkin",24.99,11,"De grano suave, nuestro café con notas dulces que te ofrecen un sabor suave, equilibrado y perfecto para comenzar el día."))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+        binding!!.ibC08.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Refresco Pepsi",24.99,12,"Acompaña tus COMBOS con un refresco grande del sabor que tú quieras!"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibP01.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Oreo Shake Thumb",49.99,13,"Nuestra rica malteada sabor vainilla con pedazos de galleta Oreo"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+        binding!!.ibP02.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("King Fusion KitKat",49.99,14,"Delicioso sundae de vainilla, mezclado con trocitos de chocolate kitkat® para un sabor único."))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibP03.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("King Fusion Emperador",74.99,15,"Delicioso sundae de vainilla, mezclado con trocitos de galleta Emperador® para un sabor único."))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibP04.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("King Fusion Oreo",49.99,16,"Fusión de nuestro delicioso helado sabor vainilla y galleta Oreo"))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibP05.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Pay de Manzana",39.99,17,"Con un relleno de manzana y envuelto en costra de hojaldre, nuestro Pay de Manzana se se sirve calientito, recién salido de la cocina."))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+        binding!!.ibP06.setOnClickListener(){
+            bundle.putParcelable("Order", Order_info("Pay HERSHEY'S",49.99,18,"Da la bienvenida a nuestro Pay HERSHEY'S® Primero, una corteza de chocolate crujiente y una parte de relleno cremoso de chocolate, adornado con un delicioso relleno de chocolate HERSHEY'S® y chispas de chocolate."))
+            findNavController().navigate(R.id.action_navigation_menu_to_fragmentDetails,bundle)
+        }
+
+
     }
 
     override fun onDestroyView() {

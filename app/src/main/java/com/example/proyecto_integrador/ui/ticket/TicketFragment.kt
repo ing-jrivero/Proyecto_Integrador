@@ -4,41 +4,81 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.proyecto_integrador.CustomAdapter
+import com.example.proyecto_integrador.OrderViewModel
+import com.example.proyecto_integrador.R
+import com.example.proyecto_integrador.databinding.FragmentDetailsBinding
 import com.example.proyecto_integrador.databinding.FragmentTicketBinding
 
 class TicketFragment : Fragment() {
 
-    private lateinit var ticketViewModel: TicketViewModel
-    private var _binding: FragmentTicketBinding? = null
+  //  private lateinit var ticketViewModel: TicketViewModel
+    private lateinit var binding: FragmentTicketBinding
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+
+
+    val totales = doubleArrayOf(800.0, 23.0, 3.5, 2223.3)
+    var total : Float? = null
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        ticketViewModel =
-            ViewModelProvider(this).get(TicketViewModel::class.java)
 
-        _binding = FragmentTicketBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = FragmentTicketBinding.inflate(inflater, container, false)
+
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        ticketViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val recyclerView = root.findViewById<RecyclerView>(R.id.V_recyclerView)
+        val adapter = CustomAdapter()
+
+        recyclerView.layoutManager = LinearLayoutManager(getContext())
+        recyclerView.adapter = adapter
+
+
+
+
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding = FragmentTicketBinding.bind(view)
+        calcularTotal()
+        binding.tvTotal.text="Total:  $ "+total.toString()
+
+
+
+
+
     }
+
+    private fun calcularTotal(){
+        total=totales.sum().toFloat()
+
+
+
+    }
+
+    /* override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }*/
 }
