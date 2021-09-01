@@ -38,7 +38,7 @@ private var ListOrders : MutableList<Order_ticket>? = null
 
             itemImage.setImageResource(data.image)
             itemTitle.text = data.title
-            itemQuantity.text = "$ "+data.quantity.toString()
+            itemQuantity.text = "Cant: "+data.quantity.toString()
             itemTotal.text = "$ "+data.Stotal
 
 

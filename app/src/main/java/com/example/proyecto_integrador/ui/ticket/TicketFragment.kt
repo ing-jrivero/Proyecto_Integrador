@@ -53,7 +53,7 @@ class TicketFragment : Fragment() {
             recyclerView.layoutManager = LinearLayoutManager(getContext())
             recyclerView.adapter = adapter
         }else{
-            
+
 
         }
 
