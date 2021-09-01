@@ -3,6 +3,7 @@
     <string name="title_menu">Menu</string>
     <string name="title_localizaciones">Localizaciones</string>
     <string name="title_recibo">Recibo</string>
+    <string name="nueva_orden_subj">Recibo de la Oreden</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

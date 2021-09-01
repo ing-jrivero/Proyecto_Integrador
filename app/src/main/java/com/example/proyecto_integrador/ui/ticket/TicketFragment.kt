@@ -1,5 +1,6 @@
 package com.example.proyecto_integrador.ui.ticket
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ class TicketFragment : Fragment() {
     private lateinit var binding: FragmentTicketBinding
     private val sharedViewModel: OrderViewModel by activityViewModels()
     private lateinit var list_orders : MutableList<Order_ticket>
+    var lista = mutableListOf("")
 
 
 
@@ -68,6 +70,14 @@ class TicketFragment : Fragment() {
         binding.tvTotal.text="Total:  $ "+total.toString()
 
 
+        binding.btnPagar.setOnClickListener(){
+            sendOrder()
+        }
+
+        binding.btnCancelar.setOnClickListener(){
+
+        }
+
 
 
 
@@ -93,4 +103,43 @@ class TicketFragment : Fragment() {
         super.onDestroyView()
         binding = null
     }*/
+
+
+fun sendOrder() {
+   /* val cantidad = sharedViewModel.quantity?:0
+    val orderSummary = getString(
+        R.string.title_recibo,
+        resources.getQuantityString(R.plurals.cupcakes, numberOfCupcakes, numberOfCupcakes),
+        sharedViewModel.flavor.value.toString(),
+        sharedViewModel.date.value.toString(),
+        sharedViewModel.price.value.toString()
+
+    )*/
+    prepararPedido()
+    val intent = Intent(Intent.ACTION_SEND)
+        .setType("text/plain")
+        .putExtra(Intent.EXTRA_SUBJECT, getString(R.string.nueva_orden_subj))
+        .putExtra(Intent.EXTRA_TEXT, lista.toString().replace('[',' ').replace(']',' '))
+        .putExtra(Intent.EXTRA_EMAIL,"burgerK_Shop@gmail.com")
+    if(activity?.packageManager?.resolveActivity(intent, 0) != null) {
+        startActivity(intent)
+
+    }
+
+}
+
+    fun prepararPedido(){
+        for (item in list_orders){
+
+                lista!!.add("\n \n* Nombre: ${item.title} Cantidad: ${item.quantity} Precio: ${item.price} SubTotal: ${item.Stotal}")
+
+
+        }
+        lista.add("\n \n* Total: $total")
+
+        lista.removeAt(0)
+    }
+
+
+
 }
