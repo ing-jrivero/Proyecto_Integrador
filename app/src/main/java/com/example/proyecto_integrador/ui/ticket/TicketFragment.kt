@@ -4,34 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_integrador.CustomAdapter
 import com.example.proyecto_integrador.OrderViewModel
+import com.example.proyecto_integrador.Order_ticket
 import com.example.proyecto_integrador.R
-import com.example.proyecto_integrador.databinding.FragmentDetailsBinding
 import com.example.proyecto_integrador.databinding.FragmentTicketBinding
 
 class TicketFragment : Fragment() {
 
   //  private lateinit var ticketViewModel: TicketViewModel
     private lateinit var binding: FragmentTicketBinding
+    private val sharedViewModel: OrderViewModel by activityViewModels()
+    private lateinit var list_orders : MutableList<Order_ticket>
 
 
 
-    val totales = doubleArrayOf(800.0, 23.0, 3.5, 2223.3)
+    var totales = mutableListOf(0.0)
     var total : Float? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        list_orders=sharedViewModel.getOrders()
 
 
     }
@@ -45,11 +44,18 @@ class TicketFragment : Fragment() {
 
         val root: View = binding.root
 
-        val recyclerView = root.findViewById<RecyclerView>(R.id.V_recyclerView)
-        val adapter = CustomAdapter()
 
-        recyclerView.layoutManager = LinearLayoutManager(getContext())
-        recyclerView.adapter = adapter
+
+        if(list_orders != null){
+            val recyclerView = root.findViewById<RecyclerView>(R.id.V_recyclerView)
+            val adapter = CustomAdapter(list_orders)
+
+            recyclerView.layoutManager = LinearLayoutManager(getContext())
+            recyclerView.adapter = adapter
+        }else{
+            
+
+        }
 
 
 
@@ -68,13 +74,22 @@ class TicketFragment : Fragment() {
 
 
 
+
     }
 
     private fun calcularTotal(){
+        obtenerPrecios()
         total=totales.sum().toFloat()
 
 
 
+    }
+
+    private fun obtenerPrecios(){
+        for(item in list_orders){
+            totales.add( item.Stotal)
+
+        }
     }
 
     /* override fun onDestroyView() {

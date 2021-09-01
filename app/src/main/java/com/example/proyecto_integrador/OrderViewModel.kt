@@ -1,10 +1,16 @@
 package com.example.proyecto_integrador
 
+
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.google.android.material.internal.ContextUtils.getActivity
+
 import java.text.NumberFormat
 
 private var total_Price : Double? = null
@@ -62,8 +68,19 @@ class OrderViewModel : ViewModel() {
      //   _price.value = 0.0
     }
 
+
     fun addOrder(nOrd:Order_ticket){
-        ordenes?.add(nOrd)
+       // Log.d("OrderViewModel","O:"+nOrd )
+      //  println("O:"+nOrd)
+        if(ordenes == null){
+            ordenes = mutableListOf(nOrd)
+        }else{
+            ordenes!!.add(nOrd)
+        }
+
+
+
+       // Log.d("OrderViewModel","OS:"+ ordenes.toString() )
 
     }
 

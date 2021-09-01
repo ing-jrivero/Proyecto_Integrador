@@ -5,32 +5,47 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter: RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(list: MutableList<Order_ticket>?) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-private val ListaOrdenes : MutableList<Order_ticket>? = null
+private var ListOrders : MutableList<Order_ticket>? = null
+
+    init {
+        ListOrders= list
+    }
+
+
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
+        private var Order : Order_ticket? = null
         var itemImage: ImageView
         var itemTitle: TextView
         var itemQuantity: TextView
+       // var itemPrice: TextView
         var itemTotal: TextView
-
         init {
             itemImage = itemView.findViewById(R.id.item_image)
             itemTitle = itemView.findViewById(R.id.item_title)
             itemQuantity = itemView.findViewById(R.id.item_quantity)
+        //    itemPrice = itemView.findViewById(R.id.item)
             itemTotal = itemView.findViewById(R.id.item_total)
+
         }
 
+        fun asignarDatos(data: Order_ticket) {
+
+            itemImage.setImageResource(data.image)
+            itemTitle.text = data.title
+            itemQuantity.text = "$ "+data.quantity.toString()
+            itemTotal.text = "$ "+data.Stotal
+
+
+        }
+
+
     }
-    val title = arrayOf("Hamburguesa","Papas Fritas","Ensalada","Cafe")
-    val quantity = arrayOf("8","9","3","8")
-    val images = arrayOf(R.drawable.chipotleking,R.drawable.bk_papas_supremas_atumanera,R.drawable.bk_web_ensalada_cranberry,R.drawable.cafe_dunkin)
-    val totales = arrayOf("800","23","3","2223")
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
@@ -39,14 +54,14 @@ private val ListaOrdenes : MutableList<Order_ticket>? = null
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.itemTitle.text = title[i]
-        viewHolder.itemQuantity.text = "Cantidad: "+quantity[i]
-        viewHolder.itemTotal.text = "SubTotal: $" +totales[i]
-        viewHolder.itemImage.setImageResource(images[i])
+
+
+
+        viewHolder.asignarDatos(ListOrders!!.get(i))
     }
 
     override fun getItemCount(): Int {
-        return title.size
+        return ListOrders!!.size
 
     }
 }

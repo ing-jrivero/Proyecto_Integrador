@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 //import com.example.proyecto_integrador.databinding.ActivityMainBinding
 import com.example.proyecto_integrador.databinding.FragmentDetailsBinding
 //import android.R
@@ -99,9 +100,12 @@ class FragmentDetails : Fragment() {
         }
         binding.btnComprar.setOnClickListener(){
             sendOrder = Order_ticket(titulo.toString(),cant,precio!!,(cant* precio!!),img)
+         //   Toast.makeText(getActivity(),"D: "+sendOrder.toString(),Toast.LENGTH_SHORT).show()
+           // Thread.sleep(2000)
             sharedViewModel.addOrder(sendOrder!!)
-         //   Toast.makeText(getActivity(),sendOrder.toString(),Toast.LENGTH_SHORT).show()
+           // Toast.makeText(getActivity(),sendOrder.toString(),Toast.LENGTH_SHORT).show()
             Toast.makeText(getActivity(),"Producto Agregado Al Recibo",Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_fragmentDetails_to_navigation_menu)
 
 
         }
