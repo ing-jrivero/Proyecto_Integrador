@@ -46,16 +46,13 @@ class TicketFragment : Fragment() {
 
 
 
-        if(list_orders != null){
+
             val recyclerView = root.findViewById<RecyclerView>(R.id.V_recyclerView)
             val adapter = CustomAdapter(list_orders)
 
             recyclerView.layoutManager = LinearLayoutManager(getContext())
             recyclerView.adapter = adapter
-        }else{
 
-
-        }
 
 
 

@@ -39,7 +39,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/V_recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:layout_height="466dp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -59,26 +59,44 @@
                     android:layout_marginRight="14dp"/>
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btn_pagar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:text="Button"
+                    android:layout_margin="16dp"
+
+                    android:layout_marginStart="123dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="231dp"
+                    android:background="@color/orange_2"
+                    android:elevation="3dp"
+                    android:text="Pagar Recibo"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/V_recyclerView"
                     android:layout_marginRight="14dp"
                     android:layout_marginLeft="14dp"/>
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btn_cancelar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="Button"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button3"
+                    android:layout_margin="16dp"
+
+                    android:layout_marginStart="123dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="231dp"
                     android:layout_marginRight="14dp"
-                    android:layout_marginLeft="14dp"/>
+                    android:background="@color/orange_2"
+                    android:elevation="3dp"
+                    android:text="Cancelar Orden"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_pagar" />
 
             </LinearLayout>
         </ScrollView>
