@@ -26,20 +26,18 @@ class FragmentDetails : Fragment() {
     private val sharedViewModel: OrderViewModel by activityViewModels()
 
     private var orden : Order_info? = null
-//    private var comprar : Button? = null
+
     private var titulo : String? = null
     private var descripcion : String? = null
-    private var precio : Double? = null
-    private var cantidad : TextView? = null
-    private var menos : ImageButton? = null
-    private var mas : ImageButton? = null
+    private var precio : Float? = null
+  //  private var cantidad : TextView? = null
+  //  private var menos : ImageButton? = null
+   // private var mas : ImageButton? = null
     private var Cod_imagen : Int? = null
-//    private var imagen : ImageView? = null
     private var img : Int = 0
     private var cant = 1
     private var sendOrder: Order_ticket? = null
 
-   // private val uri : String = "@drawable/chipotleking"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,7 +97,7 @@ class FragmentDetails : Fragment() {
             updatePrice()
         }
         binding.btnComprar.setOnClickListener(){
-            sendOrder = Order_ticket(titulo.toString(),cant,precio!!,(cant* precio!!),img)
+            sendOrder = Order_ticket(titulo.toString(),cant,precio!!.toFloat(),(cant* precio!!.toDouble()),img)
          //   Toast.makeText(getActivity(),"D: "+sendOrder.toString(),Toast.LENGTH_SHORT).show()
            // Thread.sleep(2000)
             sharedViewModel.addOrder(sendOrder!!)
@@ -111,6 +109,7 @@ class FragmentDetails : Fragment() {
         }
 
     }
+
 
     private fun updatePrice(){
         var numero : Float? = null

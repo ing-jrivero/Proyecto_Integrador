@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_integrador.CustomAdapter
@@ -21,6 +23,7 @@ class TicketFragment : Fragment() {
     private lateinit var binding: FragmentTicketBinding
     private val sharedViewModel: OrderViewModel by activityViewModels()
     private lateinit var list_orders : MutableList<Order_ticket>
+
     var lista = mutableListOf("")
 
 
@@ -32,7 +35,10 @@ class TicketFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         list_orders=sharedViewModel.getOrders()
+
+
 
 
     }
@@ -47,6 +53,13 @@ class TicketFragment : Fragment() {
         val root: View = binding.root
 
 
+        list_orders=sharedViewModel.getOrders()
+        if(list_orders.size>1){
+            if(list_orders[0].price == 0.0.toFloat()){
+                list_orders.removeAt(0)
+            }
+
+            }
 
 
             val recyclerView = root.findViewById<RecyclerView>(R.id.V_recyclerView)
@@ -71,10 +84,18 @@ class TicketFragment : Fragment() {
 
 
         binding.btnPagar.setOnClickListener(){
-            sendOrder()
+            if(list_orders[0].price != 0.0.toFloat()){
+                sendOrder()
+            }else{
+                Toast.makeText(getActivity(),"La lista esta vacia",Toast.LENGTH_SHORT).show()
+
+            }
+
         }
 
         binding.btnCancelar.setOnClickListener(){
+            sharedViewModel.resetOrder()
+            findNavController().navigate(R.id.action_navigation_ticket_to_navigation_menu)
 
         }
 
@@ -106,15 +127,7 @@ class TicketFragment : Fragment() {
 
 
 fun sendOrder() {
-   /* val cantidad = sharedViewModel.quantity?:0
-    val orderSummary = getString(
-        R.string.title_recibo,
-        resources.getQuantityString(R.plurals.cupcakes, numberOfCupcakes, numberOfCupcakes),
-        sharedViewModel.flavor.value.toString(),
-        sharedViewModel.date.value.toString(),
-        sharedViewModel.price.value.toString()
 
-    )*/
     prepararPedido()
     val intent = Intent(Intent.ACTION_SEND)
         .setType("text/plain")

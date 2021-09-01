@@ -19,7 +19,7 @@ private var ListOrders : MutableList<Order_ticket>? = null
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        private var Order : Order_ticket? = null
+    //    private var Order : Order_ticket? = null
         var itemImage: ImageView
         var itemTitle: TextView
         var itemQuantity: TextView
@@ -64,4 +64,5 @@ private var ListOrders : MutableList<Order_ticket>? = null
         return ListOrders!!.size
 
     }
+
 }

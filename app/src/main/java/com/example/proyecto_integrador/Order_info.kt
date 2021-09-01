@@ -5,11 +5,11 @@ import android.os.Parcelable
 import androidx.versionedparcelable.VersionedParcelize
 
 @VersionedParcelize
-data class Order_info(val titulo:String, val precio:Double, val imagen:Int, val descripcion:String):Parcelable {
+data class Order_info(val titulo:String, val precio:Float, val imagen:Int, val descripcion:String):Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
-        parcel.readDouble()!!,
+        parcel.readFloat()!!,
         parcel.readInt()!!,
         parcel.readString()!!
     ) {
@@ -21,7 +21,7 @@ data class Order_info(val titulo:String, val precio:Double, val imagen:Int, val 
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(titulo)
-        parcel.writeDouble(precio)
+        parcel.writeFloat(precio)
         parcel.writeInt(imagen)
         parcel.writeString(descripcion)
 

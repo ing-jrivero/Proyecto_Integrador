@@ -15,13 +15,8 @@ import java.text.NumberFormat
 
 private var total_Price : Double? = null
 private var ordenes : MutableList<Order_ticket>? = null
+private var objetoVacio = Order_ticket("Lista Vacia",0,0.toFloat(),0.0,0)
 
-//private val nombre : Drawable =
-    private val uri : String = "@drawable/imagen"
-    /*String uri = "@drawable/imagen";
-int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-Drawable imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
-imageView.setImageDrawable(imagen);*/
 
 
 
@@ -36,7 +31,7 @@ class OrderViewModel : ViewModel() {
     private val _quantity = MutableLiveData<Int>()
     val quantity: LiveData<Int> = _quantity
 
-    private val _price = MutableLiveData<Double>()
+    private val _price = MutableLiveData<Float>()
     val price: LiveData<String> = Transformations.map(_price){
         NumberFormat.getCurrencyInstance().format(it)
     }
@@ -55,32 +50,23 @@ class OrderViewModel : ViewModel() {
     fun setTitle(titleOfProducts:String){
         _title.value = titleOfProducts
     }
-    fun setPrice(priceOfProducts: Double){
+    fun setPrice(priceOfProducts: Float){
         _price.value = priceOfProducts
       //  updatePrice()
     }
 
 
     fun resetOrder(){
-     //   _quantity.value = 0
-  //      _flavor.value = ""
-    //    _date.value = dateOptions[0]
-     //   _price.value = 0.0
+        ordenes?.clear()
+        ordenes= mutableListOf(objetoVacio)
+
     }
 
 
     fun addOrder(nOrd:Order_ticket){
-       // Log.d("OrderViewModel","O:"+nOrd )
-      //  println("O:"+nOrd)
-        if(ordenes == null){
-            ordenes = mutableListOf(nOrd)
-        }else{
+
             ordenes!!.add(nOrd)
-        }
-
-
-
-       // Log.d("OrderViewModel","OS:"+ ordenes.toString() )
+      // Log.d("OrderViewModel","OS:"+ ordenes.toString() )
 
     }
 
@@ -88,10 +74,13 @@ class OrderViewModel : ViewModel() {
         return ordenes!!
     }
 
-    private fun updatePrice(){
+    /*private fun updatePrice(){
         var calculatedPrice = (quantity.value ?: 0)* total_Price!!
         _price.value = calculatedPrice
-    }
+    }*/
 
+    fun isEmpty(): Boolean{
+        return ordenes.isNullOrEmpty()
+    }
 
 }
