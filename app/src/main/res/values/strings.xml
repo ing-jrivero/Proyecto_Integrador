@@ -4,6 +4,17 @@
     <string name="title_localizaciones">Localizaciones</string>
     <string name="title_recibo">Recibo</string>
     <string name="nueva_orden_subj">Recibo de la Oreden</string>
+    <string name="titulo">Titulo</string>
+    <string name="txt_lista_vacia">La lista esta vacia</string>
+    <string name="moneda">$</string>
+    <string name="numero_uno">1</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="comprar">Comprar</string>
+    <string name="recibo_orden">Recibo de la Orden</string>
+    <string name="pagar_recibo">Pagar Recibo</string>
+    <string name="cancelar_orden">Cancelar Orden</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="precio_total">Precio Total</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

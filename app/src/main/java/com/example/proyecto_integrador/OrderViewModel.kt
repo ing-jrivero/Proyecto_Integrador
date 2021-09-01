@@ -15,7 +15,7 @@ import java.text.NumberFormat
 
 private var total_Price : Double? = null
 private var ordenes : MutableList<Order_ticket>? = null
-private var objetoVacio = Order_ticket("Lista Vacia",0,0.toFloat(),0.0,0)
+private var objetoVacio = Order_ticket("Lista Vacia",0,0.0,0.0,0)
 
 
 
@@ -31,7 +31,7 @@ class OrderViewModel : ViewModel() {
     private val _quantity = MutableLiveData<Int>()
     val quantity: LiveData<Int> = _quantity
 
-    private val _price = MutableLiveData<Float>()
+    private val _price = MutableLiveData<Double>()
     val price: LiveData<String> = Transformations.map(_price){
         NumberFormat.getCurrencyInstance().format(it)
     }
@@ -50,7 +50,7 @@ class OrderViewModel : ViewModel() {
     fun setTitle(titleOfProducts:String){
         _title.value = titleOfProducts
     }
-    fun setPrice(priceOfProducts: Float){
+    fun setPrice(priceOfProducts: Double){
         _price.value = priceOfProducts
       //  updatePrice()
     }

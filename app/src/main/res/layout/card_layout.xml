@@ -32,7 +32,7 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/item_image"
             android:layout_toRightOf="@+id/item_image"
-            android:text="Titulo"
+            android:text="@string/titulo"
             android:textColor="#ffff"
             android:textSize="26dp"
             android:textStyle="bold" />
@@ -47,7 +47,7 @@
             android:layout_marginTop="-78dp"
             android:layout_toEndOf="@+id/item_image"
             android:layout_toRightOf="@+id/item_image"
-            android:text="Cantidad"
+            android:text="@string/cantidad"
             android:textColor="#ffff"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -62,7 +62,7 @@
             android:layout_marginTop="-45dp"
             android:layout_toEndOf="@+id/item_image"
             android:layout_toRightOf="@+id/item_image"
-            android:text="Precio total"
+            android:text="@string/precio_total"
             android:textColor="#ffff"
             android:textSize="24sp"
             android:textStyle="bold" />

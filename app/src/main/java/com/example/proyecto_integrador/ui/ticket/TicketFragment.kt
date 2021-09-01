@@ -55,7 +55,7 @@ class TicketFragment : Fragment() {
 
         list_orders=sharedViewModel.getOrders()
         if(list_orders.size>1){
-            if(list_orders[0].price == 0.0.toFloat()){
+            if(list_orders[0].price == 0.0){
                 list_orders.removeAt(0)
             }
 
@@ -84,10 +84,10 @@ class TicketFragment : Fragment() {
 
 
         binding.btnPagar.setOnClickListener(){
-            if(list_orders[0].price != 0.0.toFloat()){
+            if(list_orders[0].price != 0.0){
                 sendOrder()
             }else{
-                Toast.makeText(getActivity(),"La lista esta vacia",Toast.LENGTH_SHORT).show()
+                Toast.makeText(getActivity(),"@String/txt_lista_vacia",Toast.LENGTH_SHORT).show()
 
             }
 

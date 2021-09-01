@@ -29,7 +29,7 @@ class FragmentDetails : Fragment() {
 
     private var titulo : String? = null
     private var descripcion : String? = null
-    private var precio : Float? = null
+    private var precio : Double? = null
   //  private var cantidad : TextView? = null
   //  private var menos : ImageButton? = null
    // private var mas : ImageButton? = null
@@ -97,7 +97,7 @@ class FragmentDetails : Fragment() {
             updatePrice()
         }
         binding.btnComprar.setOnClickListener(){
-            sendOrder = Order_ticket(titulo.toString(),cant,precio!!.toFloat(),(cant* precio!!.toDouble()),img)
+            sendOrder = Order_ticket(titulo.toString(),cant,precio!!,(cant* precio!!),img)
          //   Toast.makeText(getActivity(),"D: "+sendOrder.toString(),Toast.LENGTH_SHORT).show()
            // Thread.sleep(2000)
             sharedViewModel.addOrder(sendOrder!!)
