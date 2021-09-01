@@ -10,55 +10,66 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="wrap_content"
+
 
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_titulo"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/titulo"
                 android:textAlignment="center"
                 android:textColor="#373b54"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_precio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="232dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/moneda"
                 android:textAlignment="center"
                 android:textColor="#ff5e00"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@+id/iv_imagen"
+                app:layout_constraintTop_toBottomOf="@+id/tv_titulo"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/iv_imagen"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/stacker_quintuple" />
+                android:layout_width="200dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/stacker_quintuple"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="55dp"
+                tools:ignore="MissingConstraints" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/linearLayout_botones"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="87dp"
+                android:layout_marginEnd="32dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
                 <ImageButton
@@ -94,63 +105,56 @@
 
             <TextView
                 android:id="@+id/tv_lbl_descripcion"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:layout_marginBottom="5dp"
                 android:text="@string/descripcion"
                 android:textColor="#686767"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="204dp"
+                tools:layout_editor_absoluteY="139dp"
+                app:layout_constraintStart_toEndOf="@+id/iv_imagen"
+                app:layout_constraintTop_toBottomOf="@+id/tv_precio"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/tv_descripcion"
-                android:layout_width="match_parent"
+                android:layout_width="450dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:text="@string/descripcion"
                 android:textColor="#9E9D9D"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/iv_imagen"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lbl_descripcion"
 
-        </LinearLayout>
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/btn_comprar"
+                android:layout_width="164dp"
+                android:layout_height="52dp"
+                android:layout_margin="16dp"
+
+                android:layout_marginTop="72dp"
+                android:layout_marginEnd="25dp"
+                android:background="@color/orange_2"
+                android:elevation="3dp"
+                android:text="@string/comprar"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_botones"
+                android:layout_marginLeft="20dp"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-    <!--
-        <TextView
-            android:id="@+id/tv_comprar"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_margin="16dp"
-            android:text="Comprar"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:elevation="3dp"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:background="@color/orange_2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />-->
 
-    <Button
-        android:id="@+id/btn_comprar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-
-        android:layout_marginStart="123dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="231dp"
-        android:background="@color/orange_2"
-        android:elevation="3dp"
-        android:text="@string/comprar"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        tools:ignore="TextContrastCheck,TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
