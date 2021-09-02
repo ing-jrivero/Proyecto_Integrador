@@ -30,9 +30,7 @@ class FragmentDetails : Fragment() {
     private var titulo : String? = null
     private var descripcion : String? = null
     private var precio : Double? = null
-  //  private var cantidad : TextView? = null
-  //  private var menos : ImageButton? = null
-   // private var mas : ImageButton? = null
+
     private var Cod_imagen : Int? = null
     private var img : Int = 0
     private var cant = 1

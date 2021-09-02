@@ -19,7 +19,7 @@ import com.example.proyecto_integrador.databinding.FragmentTicketBinding
 
 class TicketFragment : Fragment() {
 
-  //  private lateinit var ticketViewModel: TicketViewModel
+
     private lateinit var binding: FragmentTicketBinding
     private val sharedViewModel: OrderViewModel by activityViewModels()
     private lateinit var list_orders : MutableList<Order_ticket>
@@ -120,10 +120,6 @@ class TicketFragment : Fragment() {
         }
     }
 
-    /* override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-    }*/
 
 
 fun sendOrder() {

@@ -23,13 +23,13 @@ private var ListOrders : MutableList<Order_ticket>? = null
         var itemImage: ImageView
         var itemTitle: TextView
         var itemQuantity: TextView
-       // var itemPrice: TextView
+
         var itemTotal: TextView
         init {
             itemImage = itemView.findViewById(R.id.item_image)
             itemTitle = itemView.findViewById(R.id.item_title)
             itemQuantity = itemView.findViewById(R.id.item_quantity)
-        //    itemPrice = itemView.findViewById(R.id.item)
+
             itemTotal = itemView.findViewById(R.id.item_total)
 
         }
