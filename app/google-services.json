@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "300157991722",
+    "project_id": "boreal-antonym-324015",
+    "storage_bucket": "boreal-antonym-324015.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300157991722:android:6cc99a2a01f42cc675bc53",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_integrador"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300157991722-foffi47cl48bhd26b88sa1rd0el9va8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBctCF7sHJjupHBmHJe0ozpx_B3ZiNcolA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300157991722-foffi47cl48bhd26b88sa1rd0el9va8n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

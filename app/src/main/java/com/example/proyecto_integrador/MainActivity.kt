@@ -13,6 +13,9 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_integrador.databinding.ActivityMainBinding
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +32,11 @@ class MainActivity : AppCompatActivity() {
        // this.supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Obtain the FirebaseAnalytics instance.
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val bundle = Bundle()
+        bundle.putString("message","Integracion de Firebase completa")
+        analytics.logEvent("InitScreen",bundle)
 
 
 
