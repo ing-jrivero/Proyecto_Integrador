@@ -15,5 +15,9 @@
         android:id="@+id/navigation_ticket"
         android:icon="@drawable/ic_baseline_point_of_sale_24"
         android:title="@string/title_recibo" />
+    <item
+        android:id="@+id/navigation_sesion"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="@string/title_sesion" />
 
 </menu>

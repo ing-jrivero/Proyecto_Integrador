@@ -64,4 +64,9 @@
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_sesion"
+        android:name="com.example.proyecto_integrador.SesionFragment"
+        android:label="@string/sesion_activa"
+        tools:layout="@layout/fragment_sesion" />
 </navigation>

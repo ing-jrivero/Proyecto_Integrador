@@ -1,6 +1,7 @@
 package com.example.proyecto_integrador.ui.menu
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,7 +69,7 @@ class MenuFragment : Fragment() {
         binding!!.ibH01.setOnClickListener(){
 
           //  bundle.putParcelable("Order", Order_info("Chipotle King",119.99,1,"Preparada con dos carnes de res a la parrilla, jugosos jitomates, lechuga recién cortada, tocino, nuevo aderezo de chipotle y aros de cebolla crujientes, sobre un pan suave con ajonjolí. "))
-            db.collection("Productos").document("chipotle_king").get().addOnSuccessListener {
+            db.collection("productos").document("Chipotle King").get().addOnSuccessListener {
           //      val  titulo = it.get("titulo") as String
           //      val precio = it.get("precio") as Double
          //       val imagen = (it.get("imagen") as Long).toInt()
