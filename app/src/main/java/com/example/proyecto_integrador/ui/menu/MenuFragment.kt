@@ -21,6 +21,7 @@ class MenuFragment : Fragment() {
     private lateinit var menuViewModel: MenuViewModel
     private var _binding: FragmentMenuBinding? = null
     private val db = FirebaseFirestore.getInstance()
+    val TAG = "hamburguesa"
 
 
 
@@ -75,7 +76,7 @@ class MenuFragment : Fragment() {
          //       val imagen = (it.get("imagen") as Long).toInt()
          //       val descripcion = it.get("descripcion") as String
 
-                bundle.putParcelable("Order",Order_info(it.get("titulo") as String,it.get("precio") as Double,(it.get("imagen") as Long).toInt(),it.get("descripcion") as String))
+                bundle.putParcelable("Order", Order_info(it.get("titulo") as String,it.get("precio") as Double,(it.get("imagen") as Long).toInt(),it.get("descripcion") as String))
 
          //       bundle.putParcelable("Order",Order_info(titulo,precio,imagen,descripcion))
               //  bundle.putParcelable("Order", Order_info("Chipotle King",119.99,1,"Preparada con dos carnes de res a la parrilla, jugosos jitomates, lechuga recién cortada, tocino, nuevo aderezo de chipotle y aros de cebolla crujientes, sobre un pan suave con ajonjolí. "))
