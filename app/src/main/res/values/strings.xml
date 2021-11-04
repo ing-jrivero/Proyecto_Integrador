@@ -21,6 +21,8 @@
     <string name="contraseña">Contraseña</string>
     <string name="no_tienes_cuenta">No tienes una cuenta?</string>
     <string name="registrarse">Registrarse</string>
+    <string name="registrar">Registrar</string>
+    <string name="acceder">Acceder</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

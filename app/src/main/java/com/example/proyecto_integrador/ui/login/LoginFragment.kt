@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class LoginFragment : Fragment() {
 
 
+
     private var _binding: FragmentLoginBinding? = null
     private val db = FirebaseFirestore.getInstance()
     private val binding get() = _binding!!
@@ -23,6 +24,7 @@ class LoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
