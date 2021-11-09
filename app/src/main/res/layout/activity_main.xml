@@ -85,5 +85,21 @@
             android:layout_height="wrap_content"
             android:text="Button" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_google"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableStart="@drawable/logo_google"
+            android:drawablePadding="5dp"
+            android:paddingStart="16dp"
+            android:text="@string/google"
+            android:textAlignment="textStart"
+            android:textColor="@color/black" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
