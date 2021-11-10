@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -35,9 +36,11 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider
 import com.google.firebase.ktx.Firebase
 
+
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+   // private val user: UserDataViewModel by activityViewModels()
     var email: String = ""
     var pass: String = ""
 
@@ -80,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                         if (it.isSuccessful) {
                             //               Log.d(TAG, "nos dio successful")
                             //              Toast.makeText(this, "nos dio successful", Toast.LENGTH_SHORT).show()
-                            openApp(it.result?.user?.email ?: "", ProviderType.BASIC)
+                            openApp(it.result?.user?.email ?: "", ProviderType.Email)
                         } else {
                             //             Log.d(TAG, "nos dio ! successful")
                             //             Toast.makeText(this, "nos dio ! successful", Toast.LENGTH_SHORT).show()
@@ -111,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                 putExtra("email", "email")
                 putExtra("provider", "provider")
             }
-
+            guardarDatos("email", "provider")
             startActivity(intent)
         }
 
@@ -145,7 +148,7 @@ class MainActivity : AppCompatActivity() {
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             //         Log.d(TAG,"nos dio successful")
-                            openApp(it.result?.user?.email ?: "", ProviderType.BASIC)
+                            openApp(it.result?.user?.email ?: "", ProviderType.Email)
                         } else {
 
                             //          Log.d(TAG,"nos dio ! successful")
@@ -195,6 +198,7 @@ if(currentUser != null){
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful) {
                             //         Log.d(TAG,"nos dio successful")
+                                guardarDatos(account.email ?: "", ProviderType.GOOGLE.toString())
                             openApp(account.email ?: "", ProviderType.GOOGLE)
                         } else {
 
@@ -253,6 +257,9 @@ if(currentUser != null){
             //  Log.d(TAG,"vamos a abrir el intent")
             //       Toast.makeText(applicationContext,"vamos a abrir el intent",Toast.LENGTH_SHORT).show()
             startActivity(appIntent)
+        }
+        fun guardarDatos(e: String,p: String){
+
         }
 
     }

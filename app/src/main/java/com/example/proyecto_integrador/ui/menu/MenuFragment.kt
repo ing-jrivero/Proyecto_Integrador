@@ -21,7 +21,7 @@ class MenuFragment : Fragment() {
     private lateinit var menuViewModel: MenuViewModel
     private var _binding: FragmentMenuBinding? = null
     private val db = FirebaseFirestore.getInstance()
-    val TAG = "hamburguesa"
+
 
 
 

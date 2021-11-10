@@ -39,7 +39,7 @@ class SignUpFragment : Fragment() {
         _binding = FragmentSignUpBinding.bind(view)
 
       binding.btnRegistarse.setOnClickListener {
-          findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+        //  findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
       }
 
 

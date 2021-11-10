@@ -4,20 +4,27 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.proyecto_integrador.databinding.ActivityAppBinding
+import com.example.proyecto_integrador.ui.menu.MenuViewModel
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import androidx.fragment.app.activityViewModels
+import com.example.proyecto_integrador.UserDataViewModel
 
 enum class ProviderType{
-    BASIC,
+    Email,
     GOOGLE,
     FACEBOOK,
 
@@ -25,6 +32,9 @@ enum class ProviderType{
 
 class AppActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAppBinding
+   // private lateinit var userDataViewModel: UserDataViewModel
+   // private val user: UserDataViewModel by viewModels()
+   //private val user: UserDataViewModel by activityViewModels()
     private lateinit var navController: NavController
     var email = ""
     var provider= ""
@@ -37,6 +47,7 @@ class AppActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         // this.supportActionBar?.hide()
+       // userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
         binding = ActivityAppBinding.inflate(layoutInflater)
         setContentView(binding.root)
         // Obtain the FirebaseAnalytics instance.
@@ -55,8 +66,17 @@ class AppActivity : AppCompatActivity() {
         prefs.putString("email",email)
         prefs.putString("provider",provider)
         prefs.apply()
+     //   userDataViewModel.setEmail(email)
+     //   userDataViewModel.setProvider(provider)
+     //   Log.d("TAG","Email seteado: "+userDataViewModel.getEmail())
+     //   userDataViewModel.setUsuario(email,provider)
+      //  Log.d("TAG","Email seteado: "+userDataViewModel.usuario.value)
 
 
+/*
+        val bundleS = Bundle()
+        bundleS.putString("email", value1)
+        bundleS.putString("provedor", value2)*/
 
         val navView: BottomNavigationView = binding.navView
 
