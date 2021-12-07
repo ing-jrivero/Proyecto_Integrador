@@ -57,6 +57,7 @@ class LoginFragment : Fragment() {
       //  setTheme(R.style.AppTheme)
         auth = Firebase.auth
         super.onCreate(savedInstanceState)
+
         // this.supportActionBar?.hide()
         binding = FragmentLoginBinding.inflate(layoutInflater)
        // setContentView(binding.root)
@@ -69,6 +70,8 @@ class LoginFragment : Fragment() {
         analytics.logEvent("InitScreen", bundle)
 
         //  sesion()
+
+
 
         binding.btnRegistrar1.setOnClickListener {
 
@@ -104,8 +107,7 @@ class LoginFragment : Fragment() {
 
                 //  startActivity(intent)
             } else {
-                Toast.makeText(getActivity(), "ERROR: Complete los campos requeridos", Toast.LENGTH_SHORT)
-                    .show()
+               // Toast.makeText(getActivity(), "ERROR: Complete los campos requeridos", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -117,7 +119,7 @@ class LoginFragment : Fragment() {
             }*/
 
             guardarDatos("email", "provider")
-            findNavController().navigate(R.id.action_login1Fragment_to_navigation_menu)
+         //   findNavController().navigate(R.id.action_login1Fragment_to_navigation_menu)
             /*startActivity(intent)*/
         }
 
@@ -166,8 +168,7 @@ class LoginFragment : Fragment() {
                 //    startActivity(intent)
             } else {
 
-                Toast.makeText(getActivity(), "ERROR: Complete los campos requeridos", Toast.LENGTH_SHORT)
-                    .show()
+           //     Toast.makeText(getActivity(), "ERROR: Complete los campos requeridos", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -188,6 +189,12 @@ if(currentUser != null){
 }
 */
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == GOOGLE_SING_IN) {
@@ -203,7 +210,7 @@ if(currentUser != null){
 
                             guardarDatos(account.email ?: "", ProviderType.GOOGLE.toString())
                           //  openApp(account.email ?: "", ProviderType.GOOGLE)
-                            findNavController().navigate(R.id.action_login1Fragment_to_navigation_menu)
+                     //       findNavController().navigate(R.id.action_login1Fragment_to_navigation_menu)
                         } else {
 
 
@@ -239,7 +246,7 @@ if(currentUser != null){
     fun obtenerDatos() {
         email = binding.etEmail1.text.toString()
         pass = binding.etPassword1.text.toString()
-        Toast.makeText(getActivity(), email + " + " + pass, Toast.LENGTH_SHORT).show()
+     //   Toast.makeText(getActivity(), email + " + " + pass, Toast.LENGTH_SHORT).show()
     }
 
     private fun showAlert() {
@@ -262,7 +269,7 @@ if(currentUser != null){
     fun guardarDatos(e: String,p: String){
         user.setEmail(e)
         user.setProvider(p)
-        Log.d("TAG","e: "+user.email.value.toString()+" p: "+user.provider.value.toString())
+     //   Log.d("TAG","e: "+user.email.value.toString()+" p: "+user.provider.value.toString())
 
     }
 

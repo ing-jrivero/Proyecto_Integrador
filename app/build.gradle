@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
@@ -65,5 +66,15 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
 
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
+    //room
+    implementation("androidx.room:room-runtime:2.3.0")
+    //annotationProcessor("androidx.room:room-compiler:2.3.0")
+    kapt("androidx.room:room-compiler:2.3.0")
+    //
+    //  implementation 'com.android.support:design:26.1.0'
+    // implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'org.jetbrains.anko:anko-common:0.9'
+    implementation "android.arch.persistence.room:runtime:1.0.0-rc1"
+    kapt "android.arch.persistence.room:compiler:1.0.0-rc1"
 
 }

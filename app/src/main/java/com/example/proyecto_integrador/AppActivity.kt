@@ -2,9 +2,11 @@ package com.example.proyecto_integrador
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -45,6 +47,9 @@ class AppActivity : AppCompatActivity() {
 
         setTheme(R.style.AppTheme)
 
+
+       // title = "Proyecto integrador"
+
         super.onCreate(savedInstanceState)
         // this.supportActionBar?.hide()
        // userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
@@ -55,11 +60,12 @@ class AppActivity : AppCompatActivity() {
     //    val bundle = Bundle()
     //    bundle.putString("message","Integracion de Firebase completa")
     //    analytics.logEvent("InitScreen",bundle)
+     //   binding.navView.visibility = View.GONE
 
         val bundle: Bundle? = intent.extras
         email = bundle?.getString("email")!!
         provider = bundle?.getString("provider")!!
-        Toast.makeText(this,"e = "+email+" + "+"P = "+provider,Toast.LENGTH_SHORT).show()
+      //  Toast.makeText(this,"e = "+email+" + "+"P = "+provider,Toast.LENGTH_SHORT).show()
 
         //Guardamndo Datos
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()

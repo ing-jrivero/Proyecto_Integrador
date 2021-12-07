@@ -19,6 +19,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyecto_integrador.Model.RegistroEntity
 import com.example.proyecto_integrador.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -35,6 +36,8 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider
 import com.google.firebase.ktx.Firebase
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 
 class MainActivity : AppCompatActivity() {
@@ -47,6 +50,7 @@ class MainActivity : AppCompatActivity() {
     // val TAG = "MainActivity"
     private lateinit var auth: FirebaseAuth
     private val GOOGLE_SING_IN = 100
+    val botonif = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -77,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 //     Log.d(TAG, "si entramos al if")
                 //          Toast.makeText(this, "si entramos al if", Toast.LENGTH_SHORT).show()
                 //     Log.d(TAG, "email = " + email + " + " + "pass = " + pass)
-                //      Toast.makeText(this,"email = " + email + " + " + "pass = " + pass,Toast.LENGTH_SHORT).show()
+             //         Toast.makeText(this,"email = " + email + " + " + "pass = " + pass,Toast.LENGTH_SHORT).show()
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
@@ -103,8 +107,7 @@ class MainActivity : AppCompatActivity() {
 
                 //  startActivity(intent)
             } else {
-                Toast.makeText(this, "ERROR: Complete los campos requeridos", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, "ERROR: Complete los campos requeridos", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -163,8 +166,7 @@ class MainActivity : AppCompatActivity() {
                 //    startActivity(intent)
             } else {
 
-                Toast.makeText(this, "ERROR: Complete los campos requeridos", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, "ERROR: Complete los campos requeridos", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -254,12 +256,25 @@ if(currentUser != null){
                 putExtra("email", email)
                 putExtra("provider", provider.name)
             }
+            guardarDatos(email,provider.name)
             //  Log.d(TAG,"vamos a abrir el intent")
             //       Toast.makeText(applicationContext,"vamos a abrir el intent",Toast.LENGTH_SHORT).show()
             startActivity(appIntent)
         }
         fun guardarDatos(e: String,p: String){
+            addRegistro(RegistroEntity(email = e,proveedor = p)
+            )
+        }
+
+    private fun addRegistro(registro: RegistroEntity) {
+        doAsync {
+            val id = MiAplicacion.database.registroDao().addRegistro(registro)
+            //   val recoveryRegistro = MisNotasApp.database.registroDao().getRegitroById(id)
 
         }
 
     }
+
+}
+
+

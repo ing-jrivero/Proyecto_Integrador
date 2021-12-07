@@ -69,6 +69,9 @@ class Login1Fragment : Fragment() {
         val bundle = Bundle()
         binding = FragmentLogin1Binding.bind(view)
 
+      //  binding.btnGooglep1.setBackgroundColor(R.color.white)
+
+
         binding.buttonp1.setOnClickListener {
             /*val intent = Intent(this, AppActivity::class.java).apply {
                 putExtra("email", "email")
@@ -76,7 +79,7 @@ class Login1Fragment : Fragment() {
             }*/
 
             guardarDatos("email", "provider")
-            findNavController().navigate(R.id.action_login1Fragment_to_navigation_menu)
+        //    findNavController().navigate(R.id.action_login1Fragment_to_navigation_menu)
             /*startActivity(intent)*/
         }
 
@@ -113,7 +116,7 @@ class Login1Fragment : Fragment() {
 
                             guardarDatos(account.email ?: "", ProviderType.GOOGLE.toString())
                             //  openApp(account.email ?: "", ProviderType.GOOGLE)
-                            findNavController().navigate(R.id.action_login1Fragment_to_navigation_menu)
+                        //    findNavController().navigate(R.id.action_login1Fragment_to_navigation_menu)
                         } else {
 
 
@@ -151,7 +154,7 @@ class Login1Fragment : Fragment() {
     fun guardarDatos(e: String,p: String){
         user.setEmail(e)
         user.setProvider(p)
-        Log.d("TAG","e: "+user.email.value.toString()+" p: "+user.provider.value.toString())
+     //   Log.d("TAG","e: "+user.email.value.toString()+" p: "+user.provider.value.toString())
 
     }
 

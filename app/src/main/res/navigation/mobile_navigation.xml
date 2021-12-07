@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/login1Fragment">
+    app:startDestination="@id/navigation_menu">
 
     <fragment
         android:id="@+id/navigation_menu"
@@ -57,21 +57,10 @@
         android:id="@+id/navigation_sesion"
         android:name="com.example.proyecto_integrador.SesionFragment"
         android:label="@string/sesion_activa"
-        tools:layout="@layout/fragment_sesion" >
-        <action
-            android:id="@+id/action_navigation_sesion_to_login1Fragment"
-            app:destination="@id/login1Fragment"
-            app:popUpTo="@id/navigation_sesion" />
-    </fragment>
+        tools:layout="@layout/fragment_sesion" />
     <fragment
         android:id="@+id/login1Fragment"
         android:name="com.example.proyecto_integrador.ui.login.Login1Fragment"
-        android:label="fragment_login1"
-        tools:layout="@layout/fragment_login1" >
-        <action
-            android:id="@+id/action_login1Fragment_to_navigation_menu"
-            app:destination="@id/navigation_menu"
-            app:popUpTo="@id/navigation_menu"
-            app:popUpToInclusive="false" />
-    </fragment>
+        android:label="Proyecto Integrador"
+        tools:layout="@layout/fragment_login1"/>
 </navigation>

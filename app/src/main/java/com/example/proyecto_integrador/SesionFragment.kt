@@ -16,28 +16,47 @@ import androidx.navigation.fragment.findNavController
 import com.example.proyecto_integrador.databinding.ActivityAppBinding
 import com.example.proyecto_integrador.databinding.FragmentDetailsBinding
 import com.example.proyecto_integrador.databinding.FragmentSesionBinding
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 
 class SesionFragment : Fragment() {
 
     private lateinit var binding: FragmentSesionBinding
-  //  private lateinit var userDataViewModel: UserDataViewModel
-   // private val userViewModel: UserDataViewModel by viewModels()
+
+    //  private lateinit var userDataViewModel: UserDataViewModel
+    // private val userViewModel: UserDataViewModel by viewModels()
     private val user: UserDataViewModel by activityViewModels()
 
-    lateinit var L_email: String
-    lateinit var L_proveedor: String
+    var L_email = "/"
+    var L_proveedor = "/"
+    // var primerAcceso = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-     //   userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
-
-
-
+        //   userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
 
 
     }
+
+    private fun obtenerDatosDB() {
+        doAsync {
+            var r = MiAplicacion.database.registroDao().getAllRegistros()
+            //  Registro = MiAplicacion.database.registroDao().getRegitroById(email)
+
+            uiThread {
+                //      setearDatos(r)
+                //      clearFocus()
+
+                L_email = r.last().email
+                L_proveedor = r.last().proveedor
+                user.setEmail(L_email)
+                user.setProvider(L_proveedor)
+            }
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,11 +67,21 @@ class SesionFragment : Fragment() {
 
         val root: View = binding.root
 
-        user.email.observe(viewLifecycleOwner,{
-            binding.tvEmailSesion.text = "Email: "+it
+        if (L_email.equals("/")) {
+            obtenerDatosDB()
+
+        } else {
+
+
+            //primerAcceso = true
+        }
+
+
+        user.email.observe(viewLifecycleOwner, {
+            binding.tvEmailSesion.text = "Email: " + it
         })
         user.provider.observe(viewLifecycleOwner, Observer {
-            binding.tvProveedorSesion.text = "Proveedor: "+it
+            binding.tvProveedorSesion.text = "Proveedor: " + it
         })
 
 
@@ -78,19 +107,18 @@ class SesionFragment : Fragment() {
     }*/
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSesionBinding.bind(view)
 
-      //  email = userDataViewModel.getEmail()
-      //  proveedor = userDataViewModel.getProvider()
+        //  email = userDataViewModel.getEmail()
+        //  proveedor = userDataViewModel.getProvider()
 
-      //  Log.d("TAG","email obtenido: "+email)
-      //  binding.tvEmailSesion.text = "Email: "+email
-      //  binding.tvProveedorSesion.text = "Proveedor: "+proveedor
+        //  Log.d("TAG","email obtenido: "+email)
+        //  binding.tvEmailSesion.text = "Email: "+email
+        //  binding.tvProveedorSesion.text = "Proveedor: "+proveedor
 
-      /*  userViewModel.usuario.observe(viewLifecycleOwner, Observer {
+        /*  userViewModel.usuario.observe(viewLifecycleOwner, Observer {
             binding.tvEmailSesion.text = "Email: "+it.email
             binding.tvProveedorSesion.text = "Proveedor: "+it.provider
             Log.d("TAG","email de binding "+it.email)
@@ -99,8 +127,23 @@ class SesionFragment : Fragment() {
         binding.btnCerrarSesion.setOnClickListener {
 
             //borrando datos
-         //   val prefs: SharedPreferences.Editor = get
-            findNavController().navigate(R.id.action_navigation_sesion_to_login1Fragment)
+            //   val prefs: SharedPreferences.Editor = get
+            //    findNavController().navigate(R.id.action_navigation_sesion_to_login1Fragment)
+            eliminarRegistro()
+            activity?.finish()
+
+        }
+
+
+    }
+
+
+    private fun eliminarRegistro() {
+        doAsync {
+            MiAplicacion.database.registroDao().deleteAllRegistros()
+
+
+
         }
     }
 }

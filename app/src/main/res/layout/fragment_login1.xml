@@ -89,8 +89,7 @@
             android:id="@+id/btn_googlep1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:drawableStart="@drawable/logo_google"
+
             android:drawablePadding="5dp"
             android:paddingStart="16dp"
             android:text="@string/google"
@@ -98,3 +97,6 @@
             android:textColor="@color/black" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--  android:background="@color/white"
+               android:drawableStart="@drawable/logo_google"-->
