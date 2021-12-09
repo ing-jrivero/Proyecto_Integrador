@@ -24,9 +24,7 @@ enum class ProviderType{
 
 class AppActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAppBinding
-   // private lateinit var userDataViewModel: UserDataViewModel
-   // private val user: UserDataViewModel by viewModels()
-   //private val user: UserDataViewModel by activityViewModels()
+
     private lateinit var navController: NavController
     var email = ""
     var provider= ""
@@ -38,41 +36,25 @@ class AppActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
 
 
-       // title = "Proyecto integrador"
+
 
         super.onCreate(savedInstanceState)
-        // this.supportActionBar?.hide()
-       // userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
+
         binding = ActivityAppBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // Obtain the FirebaseAnalytics instance.
-     //   val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
-    //    val bundle = Bundle()
-    //    bundle.putString("message","Integracion de Firebase completa")
-    //    analytics.logEvent("InitScreen",bundle)
-     //   binding.navView.visibility = View.GONE
+
 
         val bundle: Bundle? = intent.extras
         email = bundle?.getString("email")!!
         provider = bundle?.getString("provider")!!
-      //  Toast.makeText(this,"e = "+email+" + "+"P = "+provider,Toast.LENGTH_SHORT).show()
+
 
         //Guardamndo Datos
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         prefs.putString("email",email)
         prefs.putString("provider",provider)
         prefs.apply()
-     //   userDataViewModel.setEmail(email)
-     //   userDataViewModel.setProvider(provider)
-     //   Log.d("TAG","Email seteado: "+userDataViewModel.getEmail())
-     //   userDataViewModel.setUsuario(email,provider)
-      //  Log.d("TAG","Email seteado: "+userDataViewModel.usuario.value)
 
-
-/*
-        val bundleS = Bundle()
-        bundleS.putString("email", value1)
-        bundleS.putString("provedor", value2)*/
 
         val navView: BottomNavigationView = binding.navView
 

@@ -24,14 +24,7 @@ class MenuFragment : Fragment() {
 
 
     private val binding get() = _binding!!
-/*
-    override fun onCreateView(
 
-        inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false)
-    }
-*/
 
 
     override fun onCreateView(
@@ -40,24 +33,11 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-     //   menuViewModel =
-      //      ViewModelProvider(this).get(MenuViewModel::class.java)
+
 
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         val root: View = binding.root
-/*
-        val textView_hamburguesas: TextView = binding.tvHamburguesas
-        menuViewModel.text_hamburguesas.observe(viewLifecycleOwner, Observer {
-            textView_hamburguesas.text = it
-        })
-        val textView_complementos: TextView = binding.tvComplementos
-        menuViewModel.text_complementos.observe(viewLifecycleOwner, Observer {
-            textView_complementos.text = it
-        })
-        val textView_postres: TextView = binding.tvPostres
-        menuViewModel.text_postres.observe(viewLifecycleOwner, Observer {
-            textView_postres.text = it
-        })*/
+
         return root
     }
 

@@ -85,30 +85,24 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnRegistrar.setOnClickListener {
 
-            //   Toast.makeText(this, "vamos a obtener datos", Toast.LENGTH_SHORT).show()
+
             obtenerDatos()
             if (email != "" && pass != "") {
-                //     Log.d(TAG, "si entramos al if")
-                //          Toast.makeText(this, "si entramos al if", Toast.LENGTH_SHORT).show()
-                //     Log.d(TAG, "email = " + email + " + " + "pass = " + pass)
-             //         Toast.makeText(this,"email = " + email + " + " + "pass = " + pass,Toast.LENGTH_SHORT).show()
+
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            //               Log.d(TAG, "nos dio successful")
-                            //              Toast.makeText(this, "nos dio successful", Toast.LENGTH_SHORT).show()
+
                             openApp(it.result?.user?.email ?: "", ProviderType.Email)
                         } else {
-                            //             Log.d(TAG, "nos dio ! successful")
-                            //             Toast.makeText(this, "nos dio ! successful", Toast.LENGTH_SHORT).show()
+
 
 
                             showAlert()
 
                         }
 
-                        //         Toast.makeText(this, "" + it.isSuccessful, Toast.LENGTH_SHORT).show()
-                        //         Toast.makeText(this, "" + it.isComplete, Toast.LENGTH_SHORT).show()
+
 
                     }
 
@@ -132,7 +126,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnGoogle.setOnClickListener {
-        //    Toast.makeText(this, "google", Toast.LENGTH_SHORT).show()
+
             //configuracion
             val googleconf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -162,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                                 FacebookAuthProvider.getCredential(token.token)
                             FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                                 if (it.isSuccessful) {
-                                    //         Log.d(TAG,"nos dio successful")
+
 
                                      //   FirebaseAuth.getInstance().signOut()
                                          LoginManager.getInstance().logOut()
@@ -171,7 +165,7 @@ class MainActivity : AppCompatActivity() {
                                     openApp(it.result?.user?.email ?: "", ProviderType.FACEBOOK)
                                 } else {
 
-                                    //          Log.d(TAG,"nos dio ! successful")
+
                                     showAlert()
 
                                 }
@@ -197,18 +191,16 @@ class MainActivity : AppCompatActivity() {
             obtenerDatos()
 
             if (email != "" && pass != "") {
-                //   Log.d(TAG,"si entramos al if")
-                //   Toast.makeText(this,binding.etEmail.text.toString(),Toast.LENGTH_SHORT).show()
-                //    Toast.makeText(this,binding.etPassword.text.toString(),Toast.LENGTH_SHORT).show()
+
 
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            //         Log.d(TAG,"nos dio successful")
+
                             openApp(it.result?.user?.email ?: "", ProviderType.Email)
                         } else {
 
-                            //          Log.d(TAG,"nos dio ! successful")
+
                             showAlert()
 
                         }
@@ -227,24 +219,11 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-/* override fun onSupportNavigateUp(): Boolean {
- return navController.navigateUp() || super.onSupportNavigateUp()
-}*/
-/*
-public override fun onStart() {
-super.onStart()
-// Check if user is signed in (non-null) and update UI accordingly.
-val currentUser = auth.currentUser
-if(currentUser != null){
-    Log.d(TAG,"entramos a curen != null")
-}
-}
-*/
+
 
     fun skipLogin(){
         val appIntent = Intent(this, AppActivity::class.java).apply {
-            //       Toast.makeText(applicationContext,"Seteamos el intent",Toast.LENGTH_SHORT).show()
-            //    Log.d(TAG,"Seteamos el intent")
+
             putExtra("email", "email")
             putExtra("provider", "provider")
         }
@@ -267,12 +246,12 @@ if(currentUser != null){
                         GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            //         Log.d(TAG,"nos dio successful")
+
                                 guardarDatos(account.email ?: "", ProviderType.GOOGLE.toString())
                             openApp(account.email ?: "", ProviderType.GOOGLE)
                         } else {
 
-                            //          Log.d(TAG,"nos dio ! successful")
+
                             showAlert()
 
                         }
@@ -305,7 +284,7 @@ if(currentUser != null){
         fun obtenerDatos() {
             email = binding.etEmail.text.toString()
             pass = binding.etPassword.text.toString()
-        //    Toast.makeText(this, email + " + " + pass, Toast.LENGTH_SHORT).show()
+
         }
 
         private fun showAlert() {
@@ -319,14 +298,12 @@ if(currentUser != null){
 
         private fun openApp(email: String, provider: ProviderType) {
             val appIntent = Intent(this, AppActivity::class.java).apply {
-                //       Toast.makeText(applicationContext,"Seteamos el intent",Toast.LENGTH_SHORT).show()
-                //    Log.d(TAG,"Seteamos el intent")
+
                 putExtra("email", email)
                 putExtra("provider", provider.name)
             }
             guardarDatos(email,provider.name)
-            //  Log.d(TAG,"vamos a abrir el intent")
-            //       Toast.makeText(applicationContext,"vamos a abrir el intent",Toast.LENGTH_SHORT).show()
+
             startActivity(appIntent)
         }
         fun guardarDatos(e: String,p: String){
