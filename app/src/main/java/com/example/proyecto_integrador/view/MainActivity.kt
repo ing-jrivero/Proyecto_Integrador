@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
+/*
         binding.button.setOnClickListener {
             val intent = Intent(this, AppActivity::class.java).apply {
                 putExtra("email", "email")
@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
             }
             guardarDatos("email", "provider")
             startActivity(intent)
-        }
+        }*/
 
         binding.btnGoogle.setOnClickListener {
 
