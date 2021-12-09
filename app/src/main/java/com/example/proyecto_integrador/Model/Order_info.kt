@@ -1,4 +1,4 @@
-package com.example.proyecto_integrador
+package com.example.proyecto_integrador.Model
 
 import android.os.Parcel
 import android.os.Parcelable

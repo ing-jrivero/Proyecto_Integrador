@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyecto_integrador.Model.Order_ticket
 
 class CustomAdapter(list: MutableList<Order_ticket>?) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 

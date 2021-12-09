@@ -1,4 +1,4 @@
-package com.example.proyecto_integrador
+package com.example.proyecto_integrador.Model
 
 data class Order_ticket(val title: String, val quantity: Int, val price: Double, val Stotal: Double,val image : Int ){
 

@@ -1,4 +1,4 @@
-package com.example.proyecto_integrador
+package com.example.proyecto_integrador.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,13 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.proyecto_integrador.Model.Order_info
+import com.example.proyecto_integrador.Model.Order_ticket
+import com.example.proyecto_integrador.R
 //import com.example.proyecto_integrador.databinding.ActivityMainBinding
 import com.example.proyecto_integrador.databinding.FragmentDetailsBinding
+import com.example.proyecto_integrador.viewmodel.OrderViewModel
+
 //import android.R
 
 //import com.example.proyecto_integrador.databinding.FragmentTicketBinding

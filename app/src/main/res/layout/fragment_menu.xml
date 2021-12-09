@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:text="Hamburguesas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="10dp"/>
@@ -64,6 +65,7 @@
         android:id="@+id/tv_complementos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Complementos"
         android:layout_marginLeft="10dp"
         android:textSize="20sp" />
 
@@ -141,6 +143,7 @@
         android:id="@+id/tv_postres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Postres"
         android:layout_marginLeft="10dp"
         android:textSize="20sp" />
 

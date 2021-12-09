@@ -6,10 +6,10 @@ import androidx.room.*
 interface RegistroDao {
 
     @Query("SELECT * From RegistroEntity")
-    fun getAllRegistros(): List<RegistroEntity>
+     fun getAllRegistros(): List<RegistroEntity>
 
-    @Query("SELECT * From RegistroEntity WHERE email like :emailr")
-    fun getRegitroById(emailr: String):RegistroEntity
+  //  @Query("SELECT * From RegistroEntity WHERE email like :emailr")
+  //  suspend fun getRegitroById(emailr: String):RegistroEntity
 
     @Insert
     fun addRegistro(registro: RegistroEntity): Long
@@ -22,4 +22,7 @@ interface RegistroDao {
 
     @Query("DELETE FROM RegistroEntity")
     fun deleteAllRegistros()
+
+    @Query("SELECT COUNT(*) FROM RegistroEntity")
+    fun CountRows(): Int
 }

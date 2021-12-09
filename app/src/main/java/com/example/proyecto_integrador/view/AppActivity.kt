@@ -1,29 +1,19 @@
-package com.example.proyecto_integrador
+package com.example.proyecto_integrador.view
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.proyecto_integrador.R
 import com.example.proyecto_integrador.databinding.ActivityAppBinding
-import com.example.proyecto_integrador.ui.menu.MenuViewModel
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
-import androidx.fragment.app.activityViewModels
-import com.example.proyecto_integrador.UserDataViewModel
 
 enum class ProviderType{
     Email,
@@ -89,7 +79,10 @@ class AppActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment_activity_main)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_menu, R.id.navigation_map, R.id.navigation_ticket,R.id.navigation_sesion
+                R.id.navigation_menu,
+                R.id.navigation_map,
+                R.id.navigation_ticket,
+                R.id.navigation_sesion
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

@@ -1,26 +1,23 @@
-package com.example.proyecto_integrador
+package com.example.proyecto_integrador.view
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
 import android.widget.Toast
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.lifecycleScope
+import com.example.proyecto_integrador.MiAplicacion
 import com.example.proyecto_integrador.Model.RegistroEntity
+import com.example.proyecto_integrador.R
 import com.example.proyecto_integrador.databinding.ActivityMainBinding
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -28,14 +25,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -50,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     // val TAG = "MainActivity"
     private lateinit var auth: FirebaseAuth
     private val GOOGLE_SING_IN = 100
+    private val callbackManager = CallbackManager.Factory.create()
     val botonif = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +67,19 @@ class MainActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putString("message", "Integracion de Firebase completa")
         analytics.logEvent("InitScreen", bundle)
+
+        doAsync {
+            val rows = MiAplicacion.database.registroDao().CountRows()
+            uiThread {
+                if(rows>0){
+                 //   skipLogin()
+
+                }
+            }
+        }
+
+
+
 
         //  sesion()
 
@@ -138,6 +148,50 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        binding.btnFacebook.setOnClickListener {
+
+            LoginManager.getInstance().logInWithReadPermissions(this, listOf("email"))
+
+            LoginManager.getInstance().registerCallback(callbackManager,
+                object :  FacebookCallback<LoginResult> {
+                    override fun onSuccess(result: LoginResult?) {
+                        result?.let {
+                            val token = it.accessToken
+
+                            val credential: AuthCredential =
+                                FacebookAuthProvider.getCredential(token.token)
+                            FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+                                if (it.isSuccessful) {
+                                    //         Log.d(TAG,"nos dio successful")
+
+                                     //   FirebaseAuth.getInstance().signOut()
+                                         LoginManager.getInstance().logOut()
+
+                                    guardarDatos(it.result?.user?.email ?: "", ProviderType.FACEBOOK.toString())
+                                    openApp(it.result?.user?.email ?: "", ProviderType.FACEBOOK)
+                                } else {
+
+                                    //          Log.d(TAG,"nos dio ! successful")
+                                    showAlert()
+
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    override fun onCancel() {
+
+                    }
+
+                    override fun onError(error: FacebookException?) {
+                        showAlert()
+                    }
+
+                })
+        }
+
 
         binding.btnAcceder.setOnClickListener {
             obtenerDatos()
@@ -187,7 +241,21 @@ if(currentUser != null){
 }
 */
 
+    fun skipLogin(){
+        val appIntent = Intent(this, AppActivity::class.java).apply {
+            //       Toast.makeText(applicationContext,"Seteamos el intent",Toast.LENGTH_SHORT).show()
+            //    Log.d(TAG,"Seteamos el intent")
+            putExtra("email", "email")
+            putExtra("provider", "provider")
+        }
+        startActivity(appIntent)
+
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == GOOGLE_SING_IN) {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -237,7 +305,7 @@ if(currentUser != null){
         fun obtenerDatos() {
             email = binding.etEmail.text.toString()
             pass = binding.etPassword.text.toString()
-            Toast.makeText(this, email + " + " + pass, Toast.LENGTH_SHORT).show()
+        //    Toast.makeText(this, email + " + " + pass, Toast.LENGTH_SHORT).show()
         }
 
         private fun showAlert() {
@@ -268,6 +336,10 @@ if(currentUser != null){
 
     private fun addRegistro(registro: RegistroEntity) {
         doAsync {
+  //      CoroutineScope(Dispatchers.IO).launch {
+  //      lifecycleScope.launch {
+    //        val result = withContext(Dispatchers.IO){MiAplicacion.database.registroDao().addRegistro(registro)}
+      //  }
             val id = MiAplicacion.database.registroDao().addRegistro(registro)
             //   val recoveryRegistro = MisNotasApp.database.registroDao().getRegitroById(id)
 

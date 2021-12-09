@@ -1,4 +1,4 @@
-package com.example.proyecto_integrador.ui.maps
+package com.example.proyecto_integrador.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

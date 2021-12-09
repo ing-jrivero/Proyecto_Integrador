@@ -1,26 +1,22 @@
-package com.example.proyecto_integrador.ui.menu
+package com.example.proyecto_integrador.view
 
-import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.example.proyecto_integrador.Order_info
+import com.example.proyecto_integrador.Model.Order_info
 import com.example.proyecto_integrador.R
 import com.example.proyecto_integrador.databinding.FragmentMenuBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MenuFragment : Fragment() {
 
-    private lateinit var menuViewModel: MenuViewModel
+ //   private lateinit var menuViewModel: MenuViewModel
     private var _binding: FragmentMenuBinding? = null
     private val db = FirebaseFirestore.getInstance()
 
@@ -44,12 +40,12 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        menuViewModel =
-            ViewModelProvider(this).get(MenuViewModel::class.java)
+     //   menuViewModel =
+      //      ViewModelProvider(this).get(MenuViewModel::class.java)
 
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+/*
         val textView_hamburguesas: TextView = binding.tvHamburguesas
         menuViewModel.text_hamburguesas.observe(viewLifecycleOwner, Observer {
             textView_hamburguesas.text = it
@@ -61,7 +57,7 @@ class MenuFragment : Fragment() {
         val textView_postres: TextView = binding.tvPostres
         menuViewModel.text_postres.observe(viewLifecycleOwner, Observer {
             textView_postres.text = it
-        })
+        })*/
         return root
     }
 

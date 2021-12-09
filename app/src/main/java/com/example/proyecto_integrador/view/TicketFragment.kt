@@ -1,4 +1,4 @@
-package com.example.proyecto_integrador.ui.ticket
+package com.example.proyecto_integrador.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,10 +12,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_integrador.CustomAdapter
-import com.example.proyecto_integrador.OrderViewModel
-import com.example.proyecto_integrador.Order_ticket
+
+import com.example.proyecto_integrador.Model.Order_ticket
 import com.example.proyecto_integrador.R
 import com.example.proyecto_integrador.databinding.FragmentTicketBinding
+import com.example.proyecto_integrador.viewmodel.OrderViewModel
 
 class TicketFragment : Fragment() {
 

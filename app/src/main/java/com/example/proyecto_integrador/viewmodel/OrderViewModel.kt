@@ -1,15 +1,11 @@
-package com.example.proyecto_integrador
+package com.example.proyecto_integrador.viewmodel
 
 
-import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.google.android.material.internal.ContextUtils.getActivity
+import com.example.proyecto_integrador.Model.Order_ticket
 
 import java.text.NumberFormat
 
@@ -63,7 +59,7 @@ class OrderViewModel : ViewModel() {
     }
 
 
-    fun addOrder(nOrd:Order_ticket){
+    fun addOrder(nOrd: Order_ticket){
 
             ordenes!!.add(nOrd)
       // Log.d("OrderViewModel","OS:"+ ordenes.toString() )

@@ -1,21 +1,18 @@
-package com.example.proyecto_integrador
+package com.example.proyecto_integrador.view
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import com.example.proyecto_integrador.databinding.ActivityAppBinding
-import com.example.proyecto_integrador.databinding.FragmentDetailsBinding
+import com.example.proyecto_integrador.MiAplicacion
 import com.example.proyecto_integrador.databinding.FragmentSesionBinding
+import com.example.proyecto_integrador.viewmodel.UserDataViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -41,14 +38,13 @@ class SesionFragment : Fragment() {
     }
 
     private fun obtenerDatosDB() {
+
         doAsync {
+       // CoroutineScope(Dispatchers.IO).launch {
             var r = MiAplicacion.database.registroDao().getAllRegistros()
             //  Registro = MiAplicacion.database.registroDao().getRegitroById(email)
-
-            uiThread {
-                //      setearDatos(r)
-                //      clearFocus()
-
+             uiThread {
+           // activity?.runOnUiThread {
                 L_email = r.last().email
                 L_proveedor = r.last().proveedor
                 user.setEmail(L_email)
@@ -130,7 +126,7 @@ class SesionFragment : Fragment() {
             //   val prefs: SharedPreferences.Editor = get
             //    findNavController().navigate(R.id.action_navigation_sesion_to_login1Fragment)
             eliminarRegistro()
-            activity?.finish()
+            this.activity?.finish()
 
         }
 
@@ -140,6 +136,7 @@ class SesionFragment : Fragment() {
 
     private fun eliminarRegistro() {
         doAsync {
+      //  CoroutineScope(Dispatchers.IO).launch {
             MiAplicacion.database.registroDao().deleteAllRegistros()
 
 

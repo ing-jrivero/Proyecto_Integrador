@@ -83,11 +83,12 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:text="Button" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="20dp" />
 
         <Button
             android:id="@+id/btn_google"
@@ -98,6 +99,21 @@
             android:drawablePadding="5dp"
             android:paddingStart="16dp"
             android:text="@string/google"
+            android:textAlignment="textStart"
+            android:textColor="@color/black" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/btn_facebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableStart="@drawable/logo_facebook"
+            android:drawablePadding="5dp"
+            android:paddingStart="16dp"
+            android:text="@string/facebook"
             android:textAlignment="textStart"
             android:textColor="@color/black" />
 
